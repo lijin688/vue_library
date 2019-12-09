@@ -73,12 +73,13 @@ export default {
       });
       let total = mockUsers.length;
       mockUsers = mockUsers.filter((u, index) => index < 20 * page && index >= 20 * (page - 1));
+      console.info(mockUsers)
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve([200, {
+          resolve([200, {data: {
             total: total,
             users: mockUsers
-          }]);
+          }}]);
         }, 1000);
       });
     });
@@ -114,13 +115,13 @@ export default {
 
     //编辑用户
     mock.onGet('/user/edit').reply(config => {
-      let { id, name, addr, age, birth, sex } = config.params;
+      let { id, name, addr, age, inLibDate, sex } = config.params;
       _Users.some(u => {
         if (u.id === id) {
           u.name = name;
           u.addr = addr;
           u.age = age;
-          u.birth = birth;
+          u.inLibDate = inLibDate;
           u.sex = sex;
           return true;
         }
@@ -137,13 +138,13 @@ export default {
 
     //新增用户
     mock.onGet('/user/add').reply(config => {
-      let { id,name, addr, age, birth, sex } = config.params;
+      let { id,name, addr, age, inLibDate, sex } = config.params;
       _Users.push({
         id: id,
         name: name,
         addr: addr,
         age: age,
-        birth: birth,
+        inLibDate: inLibDate,
         sex: sex
       });
       return new Promise((resolve, reject) => {

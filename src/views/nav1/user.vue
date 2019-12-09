@@ -4,10 +4,10 @@
 		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 			<el-form :inline="true" :model="filters">
 				<el-form-item>
-					<el-input v-model="filters.name" placeholder="姓名"></el-input>
+					<el-input v-model="filters.name" placeholder="书名"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" v-on:click="getUser">查询</el-button>
+					<el-button type="primary" v-on:click="getBooks">查询</el-button>
 				</el-form-item>
 			</el-form>
 		</el-col>
@@ -17,15 +17,28 @@
 			<el-table :data="users" highlight-current-row v-loading="loading" style="width: 100%;">
 				<el-table-column type="index" width="60">
 				</el-table-column>
-				<el-table-column prop="name" label="姓名" width="120" sortable>
+				<!--<el-table-column prop="name" label="姓名" width="120" sortable>-->
+				<!--</el-table-column>-->
+				<!--<el-table-column prop="sex" label="性别" width="100" :formatter="formatCtg" sortable>-->
+				<!--</el-table-column>-->
+				<!--<el-table-column prop="age" label="年龄" width="100" sortable>-->
+				<!--</el-table-column>-->
+				<!--<el-table-column prop="inLibDate" label="生日" width="120" sortable>-->
+				<!--</el-table-column>-->
+				<!--<el-table-column prop="addr" label="地址" min-width="180" sortable>-->
+				<!--</el-table-column>-->
+				<el-table-column prop="name" label="书名" width="120" sortable>
 				</el-table-column>
-				<el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
+				<el-table-column prop="ctg" label="类别" width="100" :formatter="formatCtg" sortable>
 				</el-table-column>
-				<el-table-column prop="age" label="年龄" width="100" sortable>
+				<!--</el-table-column>-->
+				<!--<el-table-column prop="ctg" label="类别" width="100" sortable>-->
+				<!--</el-table-column>-->
+				<el-table-column prop="resNum" label="剩余数量" width="100" sortable>
 				</el-table-column>
-				<el-table-column prop="birth" label="生日" width="120" sortable>
+				<el-table-column prop="inLibDate" label="入管时间" width="120" sortable>
 				</el-table-column>
-				<el-table-column prop="addr" label="地址" min-width="180" sortable>
+				<el-table-column prop="addr" label="出版地" min-width="180" sortable>
 				</el-table-column>
 			</el-table>
 		</template>
@@ -33,7 +46,7 @@
 	</section>
 </template>
 <script>
-	import { getUserList } from '../../api/api';
+	import { getUserListPage } from '../../api/api';
 	//import NProgress from 'nprogress'
 	export default {
 		data() {
@@ -48,20 +61,41 @@
 		},
 		methods: {
 			//性别显示转换
-			formatSex: function (row, column) {
-				return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+			formatCtg: function(row, column) {
+				// return row.ctg == 1 ? "男" : row.sex == 0 ? "女" : "未知";
+				var cat='未知';
+				switch (row.ctg){
+					case 0:
+						cat = "哲学、宗教";
+						break;
+					case 1:
+						cat = "社会科学总论";
+						break;
+					case 2:
+						cat = "政治、法律";
+						break;
+					case 3:
+						cat = "军事";
+						break;
+					case 4:
+						cat = "文化、科学、教育、体育";
+						break;
+					default:
+						cat = "未知";
+				}
+				return cat;
 			},
 			//获取用户列表
-			getUser: function () {
+			getBooks: function () {
 				let para = {
-					name: this.filters.name
+					book_name: this.filters.name
 				};
 				this.loading = true;
 				//NProgress.start();
 				//getUserList(para)把用户输入的name传给mock中，
 				//res是Mock通过筛选后传回来的数据
-				getUserList(para).then((res) => {
-					this.users = res.data.users;
+				getUserListPage(para).then((res) => {
+					this.users = res.data.data.users;
 					this.loading = false;
 					//NProgress.done();
 				});
@@ -73,7 +107,7 @@
 			}
 		},
 		mounted() {
-			this.getUser();
+			this.getBooks();
 		}
 	};
 

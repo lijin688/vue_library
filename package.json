@@ -1,8 +1,8 @@
 {
-  "name": "vueadmin",
+  "name": "vue_library",
   "version": "1.0.5",
   "description": "vue admin project",
-  "author": "mgbq <392716797@qq.com>",
+  "author": "lijin <q963258l@163.com>",
   "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",

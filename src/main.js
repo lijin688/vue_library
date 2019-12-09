@@ -10,8 +10,8 @@ import Vuex from 'vuex'
 //import NProgress from 'nprogress'
 //import 'nprogress/nprogress.css'
 import routes from './routes'
-import Mock from './mock'
-Mock.bootstrap();
+// import Mock from './mock'
+// Mock.bootstrap();
 import 'font-awesome/css/font-awesome.min.css'
 
 Vue.use(ElementUI)
@@ -24,18 +24,18 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  //NProgress.start();
-  if (to.path == '/login') {
-    sessionStorage.removeItem('user');
-  }
-  let user = JSON.parse(sessionStorage.getItem('user'));
-  if (!user && to.path != '/login') {
-    next({ path: '/login' })
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   //NProgress.start();
+//   if (to.path == '/login') {
+//     sessionStorage.removeItem('user');
+//   }
+//   let user = JSON.parse(sessionStorage.getItem('user'));
+//   if (!user && to.path != '/login') {
+//     next({ path: '/login' })
+//   } else {
+//     next()
+//   }
+// })
 
 //router.afterEach(transition => {
 //NProgress.done();

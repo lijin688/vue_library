@@ -32,9 +32,9 @@ npm run build
 -  static: 静态文件 存放 favicon.ico 等等
 
 #### 效果图：
-![edit](http://img.blog.csdn.net/20180211113725278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzIzNDA4Nzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-![add](http://img.blog.csdn.net/20180211113752140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzIzNDA4Nzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
+![edit](https://img-blog.csdnimg.cn/20191209170351772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzU2ODUwMQ==,size_16,color_FFFFFF,t_70)
+![add](https://img-blog.csdnimg.cn/2019120917054587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzU2ODUwMQ==,size_16,color_FFFFFF,t_70)
+![demo](https://img-blog.csdnimg.cn/2019120917452130.gif)
 # Theme
 You can change theme by 
 1. Generate theme packages by [https://elementui.github.io/theme-preview/#/](https://elementui.github.io/theme-preview/#/)
@@ -57,5 +57,5 @@ Modern browsers and IE 10+.
 # License
 [MIT](http://opensource.org/licenses/MIT)
 
-这是一个vue的框架element-ui做的一个有简单的用户登录以及用户信息，使用常用的table、list、form,基本的增删改查功能，以及弹出窗
+这是一个vue的框架element-ui做的一个有简单的用户登录以及书籍信息展示，使用常用的table、list、form,基本的增删改查功能，以及弹出窗
 
